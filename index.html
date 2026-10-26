@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wordly - Interactive Single Page Dictionary</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="app-header">
+        <div class="header-container">
+            <h1 class="logo">Wordly</h1>
+            <button id="theme-toggle" class="btn btn-secondary" aria-label="Toggle interface theme">🌙 Dark Mode</button>
+        </div>
+    </header>
+
+    <main class="app-container">
+        <!-- Search Section -->
+        <section class="search-section">
+            <form id="search-form" class="search-form">
+                <div class="input-group">
+                    <input 
+                        type="text" 
+                        id="search-input" 
+                        placeholder="Explore a word..." 
+                        required 
+                        autocomplete="off"
+                        aria-label="Dictionary search term input"
+                    >
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Dynamic Main Interface Grid layout -->
+        <div class="content-layout">
+            <section id="result-container" class="result-container" aria-live="polite">
+                <div class="welcome-message">
+                    <h2>Expand Your Vocabulary</h2>
+                    <p>Type any English word in the search box above to instantly access phonetic tracks, clean contextual definitions, example expressions, and synonyms.</p>
+                </div>
+            </section>
+
+            <!-- Sticky Stateful Sidebar component -->
+            <aside class="sidebar">
+                <h3>Saved Terms</h3>
+                <ul id="saved-words-list" class="saved-list"></ul>
+                <button id="clear-saved" class="btn btn-danger btn-sm hidden">Clear Workspace</button>
+            </aside>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
