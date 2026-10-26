@@ -3,53 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wordly - Interactive Single Page Dictionary</title>
+
+    <title>Wordly Dictionary</title>
+
     <link rel="stylesheet" href="style.css">
+    <script src="index.js" defer></script>
 </head>
+
 <body>
-    <header class="app-header">
-        <div class="header-container">
-            <h1 class="logo">Wordly</h1>
-            <button id="theme-toggle" class="btn btn-secondary" aria-label="Toggle interface theme">🌙 Dark Mode</button>
-        </div>
-    </header>
+    <div class="app-container">
 
-    <main class="app-container">
-        <!-- Search Section -->
-        <section class="search-section">
-            <form id="search-form" class="search-form">
-                <div class="input-group">
-                    <input 
-                        type="text" 
-                        id="search-input" 
-                        placeholder="Explore a word..." 
-                        required 
+        <header class="header">
+            <a href="#" class="logo">Wordly<span>.</span></a>
+
+            <button
+                type="button"
+                id="theme-toggle"
+                class="theme-button"
+                aria-label="Switch color theme"
+            >
+                
+            </button>
+        </header>
+
+        <main>
+            <section class="hero">
+                <p class="eyebrow">YOUR PERSONAL DICTIONARY</p>
+
+                <h1>Discover the power of words.</h1>
+
+                <p class="hero-description">
+                    Search for a word to explore its meaning,
+                    pronunciation, synonyms, and more.
+                </p>
+
+                <form id="search-form" class="search-form">
+                    <label for="word-input" class="visually-hidden">
+                        Enter a word
+                    </label>
+
+                    <input
+                        type="text"
+                        id="word-input"
+                        placeholder="Enter a word, e.g. beautiful"
                         autocomplete="off"
-                        aria-label="Dictionary search term input"
+                        required
                     >
-                    <button type="submit" class="btn btn-primary">Search</button>
-                </div>
-            </form>
-        </section>
 
-        <!-- Dynamic Main Interface Grid layout -->
-        <div class="content-layout">
-            <section id="result-container" class="result-container" aria-live="polite">
-                <div class="welcome-message">
-                    <h2>Expand Your Vocabulary</h2>
-                    <p>Type any English word in the search box above to instantly access phonetic tracks, clean contextual definitions, example expressions, and synonyms.</p>
-                </div>
+                    <button type="submit" id="search-button">
+                        Search
+                    </button>
+                </form>
+
+                <p id="status-message" role="status" aria-live="polite"></p>
             </section>
 
-            <!-- Sticky Stateful Sidebar component -->
-            <aside class="sidebar">
-                <h3>Saved Terms</h3>
-                <ul id="saved-words-list" class="saved-list"></ul>
-                <button id="clear-saved" class="btn btn-danger btn-sm hidden">Clear Workspace</button>
-            </aside>
-        </div>
-    </main>
+            <section id="results-section" class="results-section" hidden>
+                <div class="word-heading">
+                    <div>
+                        <h2 id="word-title"></h2>
+                        <p id="phonetic"></p>
+                    </div>
 
-    <script src="app.js"></script>
+                    <button
+                        type="button"
+                        id="audio-button"
+                        class="audio-button"
+                        aria-label="Play pronunciation"
+                        hidden
+                    >
+                        
+                    </button>
+                </div>
+
+                <div class="word-actions">
+                    <button
+                        type="button"
+                        id="favorite-button"
+                        class="favorite-button"
+                    >
+                        ☆ Save to favorites
+                    </button>
+                </div>
+
+                <div id="definitions-container"></div>
+
+                <section id="synonyms-section" class="info-card" hidden>
+                    <h3>Synonyms</h3>
+                    <div id="synonyms-container" class="tag-container"></div>
+                </section>
+
+                <section id="source-section" class="source-section">
+                    <h3>Source</h3>
+                    <a
+                        id="source-link"
+                        href="https://dictionaryapi.dev/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Free Dictionary API
+                    </a>
+                </section>
+            </section>
+
+            <section class="favorites-section">
+                <div class="section-heading">
+                    <div>
+                        <h2>My favorite words</h2>
+                        <p>Keep the words you love close.</p>
+                    </div>
+
+                    <button
+                        type="button"
+                        id="clear-favorites"
+                        class="clear-button"
+                    >
+                        Clear all
+                    </button>
+                </div>
+
+                <p id="favorites-empty">
+                    Your saved words will appear here.
+                </p>
+
+                <ul id="favorites-list" class="favorites-list"></ul>
+            </section>
+        </main>
+
+        <footer>
+            <p>Wordly Dictionary &copy; 2026</p>
+            <p>Learn a new word. Every day.</p>
+        </footer>
+
+    </div>
 </body>
 </html>
